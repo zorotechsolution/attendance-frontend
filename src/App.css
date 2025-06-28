@@ -1,0 +1,13 @@
+@keyframes zoomInIcon {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.icon-animate {
+  animation: zoomInIcon 0.6s ease forwards;
+}
