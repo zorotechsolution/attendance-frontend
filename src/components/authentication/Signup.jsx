@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Box from "@mui/material/Box";
+import.meta.env.VITE_API_URL
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -32,7 +33,7 @@ function Signup() {
   const handledata = (data) => {
     const signupFunction = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/signup/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/signup/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),

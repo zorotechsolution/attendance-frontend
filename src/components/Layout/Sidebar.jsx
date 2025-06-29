@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import GroupIcon from "@mui/icons-material/Group";
 import { useNavigate } from "react-router-dom";
+import.meta.env.VITE_API_URL
 
 function Sidebar({ setShowSidebar }) {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Sidebar({ setShowSidebar }) {
 
     const fetchUserInfo = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/user/detail/", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/user/detail/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

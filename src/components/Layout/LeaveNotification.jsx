@@ -7,6 +7,7 @@ import {
   Chip,
   Divider,
 } from "@mui/material";
+import.meta.env.VITE_API_URL
 
 function LeaveNotification() {
   const [leaveRequests, setLeaveRequests] = useState([]);
@@ -16,7 +17,7 @@ function LeaveNotification() {
 
     const fetchRequests = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/leave/request/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/leave/request/`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -39,7 +40,7 @@ function LeaveNotification() {
     const token = localStorage.getItem("access_token");
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/leave/request/${id}/`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/leave/request/${id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -77,8 +78,8 @@ if (pendingRequests.length === 0) {
     flexDirection: "column",
     gap: 3,
     p: 2,
-    backgroundColor: "#121212", // 🔥 Dark background for whole section
-    minHeight: "100vh", // Full page height (optional)
+    backgroundColor: "#121212", 
+    minHeight: "100vh", 
   }}
 >
   {leaveRequests
@@ -90,8 +91,8 @@ if (pendingRequests.length === 0) {
         sx={{
           p: 3,
           borderRadius: 2,
-          backgroundColor: "#1e1e1e", // Card background
-          color: "#ffffff", // White text
+          backgroundColor: "#1e1e1e",
+          color: "#ffffff", 
         }}
       >
         {/* Username and leave type */}

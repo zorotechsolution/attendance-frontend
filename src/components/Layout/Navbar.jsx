@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
+import.meta.env.VITE_API_URL
 
 function Navbar({ showSidebar, setShowSidebar }) {
   let navigate=useNavigate()
@@ -20,7 +21,7 @@ function Navbar({ showSidebar, setShowSidebar }) {
     const get_username = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/user/detail/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/detail/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

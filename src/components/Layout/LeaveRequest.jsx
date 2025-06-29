@@ -10,6 +10,7 @@ import {
   Chip,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import.meta.env.VITE_API_URL
 
 function LeaveRequest() {
   const {
@@ -26,7 +27,7 @@ function LeaveRequest() {
     const LeaveRequestAPI = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/leave/request/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/leave/request/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -54,7 +55,7 @@ function LeaveRequest() {
   const fetchRequests = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/leave/request/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/leave/request/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import.meta.env.VITE_API_URL
+
 import {
   Paper,
   Table,
@@ -36,7 +38,7 @@ function StudentList() {
     const fetchStudentDetails = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/all/student/details/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/all/student/details/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -62,7 +64,7 @@ function StudentList() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/student/update/delete/${id}/`,
+        `${import.meta.env.VITE_API_URL}/student/update/delete/${id}/`,
         {
           method: "PATCH",
           headers: {
@@ -116,7 +118,7 @@ function StudentList() {
       if (result.isConfirmed) {
         try {
           const response = await fetch(
-            `http://127.0.0.1:8000/student/update/delete/${id}/`,
+            `${import.meta.env.VITE_API_URL}/student/update/delete/${id}/`,
             {
               method: "DELETE",
               headers: {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Box, Paper, Divider } from "@mui/material";
+import.meta.env.VITE_API_URL
 
 function Certificate() {
   const [user, setUser] = useState(null);
@@ -10,7 +11,7 @@ function Certificate() {
     const fetchUser = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const res = await fetch("http://127.0.0.1:8000/student/certificate/", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/student/certificate/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import.meta.env.VITE_API_URL
 import {
   Box,
   Typography,
@@ -50,7 +51,7 @@ function Dashboard() {
     const fetchStats = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/student/details", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/student/details`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +73,7 @@ function Dashboard() {
     const checkCompletionStatus = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const res = await fetch("http://127.0.0.1:8000/student/certificate/", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/student/certificate/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -93,7 +94,7 @@ function Dashboard() {
     const fetchPerformance = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/attendance/performence/metrics/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/performence/metrics/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -120,7 +121,7 @@ function Dashboard() {
     const getUsername = async () => {
       const token = localStorage.getItem("access_token");
       try {
-        const response = await fetch("http://127.0.0.1:8000/user/detail/", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/detail/`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -146,7 +147,7 @@ function Dashboard() {
   const getStatus = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/attendance/status/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/status/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -168,7 +169,7 @@ function Dashboard() {
   const getAttendanceHistory = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/attendance/history/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/history/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +190,7 @@ function Dashboard() {
   const handleCheckIn = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/attendance/checkin/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/checkin/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -213,7 +214,7 @@ function Dashboard() {
   const handleCheckOut = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch("http://127.0.0.1:8000/attendance/checkout/", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/checkout/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
