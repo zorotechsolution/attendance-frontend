@@ -25,8 +25,12 @@ function Sidebar({ setShowSidebar }) {
 
         if (res.ok) {
           const data = await res.json();
-          localStorage.setItem("is_staff", data.is_staff);
-          setIsAdmin(data.is_staff);
+          // localStorage.setItem("is_staff", data.is_staff);
+          // setIsAdmin(data.is_staff);
+          const isStaff = Boolean(data.is_staff);
+localStorage.setItem("is_staff", isStaff);
+setIsAdmin(isStaff);
+console.log("Admin check:", data.is_staff, "→", Boolean(data.is_staff));
         }
       } catch (err) {
         console.error("User info fetch failed", err);
