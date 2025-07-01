@@ -71,7 +71,10 @@ console.log("Admin check:", data.is_staff, "→", Boolean(data.is_staff));
       {sidebarItems.map((item, index) => (
         <Box
           key={index}
-          onClick={() => navigate(`/dashboard${item.path ? `/${item.path}` : ""}`)}
+          onClick={() => {
+      navigate(`/dashboard${item.path ? `/${item.path}` : ""}`);
+      if (window.innerWidth < 1024) setShowSidebar(false); // 👈 auto-close on mobile
+    }}
           sx={{
             display: "flex",
             alignItems: "center",
