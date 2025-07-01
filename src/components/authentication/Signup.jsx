@@ -260,6 +260,7 @@ function Signup() {
               <MenuItem value="cybersecurity">Cyber Security</MenuItem>
               <MenuItem value="vfx">VFX & Viedo Editing</MenuItem>
               <MenuItem value="graphicdesign">Graphic Design</MenuItem>
+              <MenuItem value="contentwriting">Content writing</MenuItem>
             </TextField>
 
             {/* 🌐 Domain Field */}
