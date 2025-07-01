@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Box from "@mui/material/Box";
-import.meta.env.VITE_API_URL
+import.meta.env.VITE_API_URL;
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -31,17 +31,20 @@ function Signup() {
   const password = watch("password", "");
 
   const handledata = (data) => {
-      const cleanedData = {
-    ...data,
-    username: data.username.replace(/\s+/g, "_"), // 👈 Replace all spaces with underscore
-  };
+    const cleanedData = {
+      ...data,
+      username: data.username.replace(/\s+/g, "_"),
+    };
     const signupFunction = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/signup/`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(cleanedData),
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/signup/`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(cleanedData),
+          }
+        );
 
         const result = await response.json();
         if (response.ok && response.status === 201) {
@@ -77,6 +80,41 @@ function Signup() {
     signupFunction();
   };
 
+  const fields = [
+    { label: "Full Name", name: "username" },
+    { label: "Email", name: "email" },
+    { label: "Student Id", name: "studentid" },
+    { label: "Mobile Number", name: "mobile" },
+    { label: "Password", name: "password", type: "password" },
+    {
+      label: "Confirm Password",
+      name: "confirmpassword",
+      type: "password",
+    },
+  ];
+
+  const getValidation = (name) => {
+    if (name === "confirmpassword") {
+      return (value) =>
+        value === password || "Passwords do not match";
+    }
+    if (name === "mobile") {
+      return (value) => {
+        if (!/^[6-9]\d{9}$/.test(value))
+          return "Enter valid 10-digit Indian mobile number";
+        if (/^(\d)\1+$/.test(value))
+          return "Invalid mobile number pattern";
+        return true;
+      };
+    }
+    if (name === "username") {
+      return (value) =>
+        /^[\w.@+\- ]+$/.test(value) ||
+        "Only letters, numbers and @/./+/-/_ allowed";
+    }
+    return undefined;
+  };
+
   return (
     <Box
       sx={{
@@ -87,10 +125,9 @@ function Signup() {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        overflow: "hidden", // 
+        overflow: "hidden",
       }}
     >
-      {/*  Moving Background Text */}
       <Typography
         css={css`
           animation: ${scroll} 20s linear infinite;
@@ -102,18 +139,17 @@ function Signup() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           fontSize: isSmallScreen ? "6rem" : "20rem",
-          fontWeight:1000 ,
-          color: "#ffffff90", // very mild white
+          fontWeight: 1000,
+          color: "#ffffff90",
           zIndex: 0,
           whiteSpace: "nowrap",
           userSelect: "none",
           letterSpacing: "10px",
         }}
       >
-        Zoro-Tech 
+        Zoro-Tech
       </Typography>
 
-      {/* 🔲 Overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -127,7 +163,6 @@ function Signup() {
         }}
       />
 
-      {/* ✅ Signup Form */}
       <Box
         component="form"
         onSubmit={handleSubmit(handledata)}
@@ -156,19 +191,7 @@ function Signup() {
               Register New Student
             </Typography>
 
-            {/* 🔤 Input Fields */}
-            {[
-              { label: "Full Name", name: "username" },
-              { label: "Email", name: "email" },
-              { label: "Student Id", name: "studentid" },
-              { label: "Mobile Number", name: "mobile" },
-              { label: "Password", name: "password", type: "password" },
-              {
-                label: "Confirm Password",
-                name: "confirmpassword",
-                type: "password",
-              },
-            ].map(({ label, name, type = "text" }) => (
+            {fields.map(({ label, name, type = "text" }) => (
               <TextField
                 key={name}
                 label={label}
@@ -176,24 +199,7 @@ function Signup() {
                 type={type}
                 {...register(name, {
                   required: `${label} is required`,
-                  validate:
-                    name === "confirmpassword"
-                      ? (value) =>
-                          value === password || "Passwords do not match"
-                      : name === "mobile"
-                      ? (value) => {
-                          if (!/^[6-9]\d{9}$/.test(value))
-                            return "Enter valid 10-digit Indian mobile number";
-                          if (/^(\d)\1+$/.test(value))
-                            return "Invalid mobile number pattern";
-                          return true;
-                        }
- 
-  :name === "username"
-    ? (value) =>
-        /^[\w.@+\- ]+$/.test(value) ||
-        "Only letters, numbers and @/./+/-/_ allowed"
-                      : undefined,
+                  validate: getValidation(name),
                 })}
                 helperText={errors[name]?.message}
                 error={!!errors[name]}
@@ -222,12 +228,13 @@ function Signup() {
               />
             ))}
 
-            {/* designation */}
-                        <TextField
+            <TextField
               select
               label="Designation"
               variant="outlined"
-              {...register("designation", { required: "designation is required" })}
+              {...register("designation", {
+                required: "designation is required",
+              })}
               helperText={errors.designation?.message}
               error={!!errors.designation}
               fullWidth
@@ -272,7 +279,6 @@ function Signup() {
               <MenuItem value="humanresources">Human Resources</MenuItem>
             </TextField>
 
-            {/* 🌐 Domain Field */}
             <TextField
               select
               label="Domain"
@@ -311,7 +317,6 @@ function Signup() {
               <MenuItem value="Course">Course</MenuItem>
             </TextField>
 
-            {/* ✅ Register Button */}
             <Button
               type="submit"
               fullWidth
@@ -331,8 +336,6 @@ function Signup() {
               Register
             </Button>
 
-            {/* ➖ Divider */}
-           {/* ➖ Divider */}
             <Box sx={{ display: "flex", alignItems: "center", my: 2 }}>
               <Box flex={1} height="1px" bgcolor="#888" />
               <Typography mx={1} fontWeight="medium" color="#aaa">
@@ -341,7 +344,6 @@ function Signup() {
               <Box flex={1} height="1px" bgcolor="#888" />
             </Box>
 
-            {/* 🔁 Login Redirect */}
             <Button
               fullWidth
               variant="outlined"
