@@ -157,7 +157,7 @@ function Signup() {
               { label: "Full Name", name: "username" },
               { label: "Email", name: "email" },
               { label: "Student Id", name: "studentid" },
-              { label: "Designation", name: "designation" },
+              // { label: "Designation", name: "designation" },
               { label: "Mobile Number", name: "mobile" },
               { label: "Password", name: "password", type: "password" },
               {
@@ -213,6 +213,54 @@ function Signup() {
                 }}
               />
             ))}
+
+            {/* designation */}
+                        <TextField
+              select
+              label="Designation"
+              variant="outlined"
+              {...register("designation", { required: "designation is required" })}
+              helperText={errors.designation?.message}
+              error={!!errors.designation}
+              fullWidth
+              sx={{
+                mb: 2,
+                input: {
+                  color: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                },
+                "& .MuiSelect-select": {
+                  color: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                },
+                label: { color: "#ccc" },
+                "& .MuiOutlinedInput-root": {
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  fieldset: { borderColor: "#FFB74D" },
+                  "&:hover fieldset": { borderColor: "#FFA726" },
+                  "&.Mui-focused fieldset": { borderColor: "#FFA726" },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "#FFA726",
+                  },
+                },
+              }}
+            >
+              <MenuItem value="ui/ux">UI/UX</MenuItem>
+              <MenuItem value="datascience">Data Science</MenuItem>
+              <MenuItem value="digital marketing">Digital Marketing</MenuItem>
+              <MenuItem value="pythonfullstack">Python Full Stack</MenuItem>
+              <MenuItem value="ai">AI & ML With Python</MenuItem>
+              <MenuItem value="mern">MERN Stack</MenuItem>
+              <MenuItem value="java">Java Full Stack</MenuItem>
+              <MenuItem value="mobileapp">Mobile App Development</MenuItem>
+              <MenuItem value="cybersecurity">Cyber Security</MenuItem>
+              <MenuItem value="vfx">VFX & Viedo Editing</MenuItem>
+              <MenuItem value="graphicdesign">Graphic Design</MenuItem>
+            </TextField>
 
             {/* 🌐 Domain Field */}
             <TextField
