@@ -31,12 +31,16 @@ function Signup() {
   const password = watch("password", "");
 
   const handledata = (data) => {
+      const cleanedData = {
+    ...data,
+    username: data.username.replace(/\s+/g, "_"), // 👈 Replace all spaces with underscore
+  };
     const signupFunction = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/signup/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify(cleanedData),
         });
 
         const result = await response.json();
@@ -183,9 +187,9 @@ function Signup() {
                           if (/^(\d)\1+$/.test(value))
                             return "Invalid mobile number pattern";
                           return true;
-                        },
- validate:
-  name === "username"
+                        }
+ 
+  :name === "username"
     ? (value) =>
         /^[\w.@+\- ]+$/.test(value) ||
         "Only letters, numbers and @/./+/-/_ allowed"
