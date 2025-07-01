@@ -184,9 +184,10 @@ function Signup() {
                             return "Invalid mobile number pattern";
                           return true;
                         }
-                        : name === "username"
-          ? (value) =>
-              value.trim() !== "" || "Full Name cannot be only spaces"
+          :name === "username"
+  ? (value) =>
+      /^[\w.@+-]+$/.test(value.trim()) ||
+      "Only letters, numbers and @/./+/-/_ allowed in username"
                       : undefined,
                 })}
                 helperText={errors[name]?.message}
