@@ -183,11 +183,12 @@ function Signup() {
                           if (/^(\d)\1+$/.test(value))
                             return "Invalid mobile number pattern";
                           return true;
-                        }
-          :name === "username"
-  ? (value) =>
-      /^[\w.@+-]+$/.test(value.trim()) ||
-      "Only letters, numbers and @/./+/-/_ allowed in username"
+                        },
+ validate:
+  name === "username"
+    ? (value) =>
+        /^[\w.@+\- ]+$/.test(value) ||
+        "Only letters, numbers and @/./+/-/_ allowed"
                       : undefined,
                 })}
                 helperText={errors[name]?.message}
