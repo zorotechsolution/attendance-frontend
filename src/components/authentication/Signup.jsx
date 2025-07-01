@@ -261,6 +261,7 @@ function Signup() {
               <MenuItem value="vfx">VFX & Viedo Editing</MenuItem>
               <MenuItem value="graphicdesign">Graphic Design</MenuItem>
               <MenuItem value="contentwriting">Content writing</MenuItem>
+              <MenuItem value="humanresources">Human Resources</MenuItem>
             </TextField>
 
             {/* 🌐 Domain Field */}
