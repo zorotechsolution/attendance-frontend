@@ -157,7 +157,6 @@ function Signup() {
               { label: "Full Name", name: "username" },
               { label: "Email", name: "email" },
               { label: "Student Id", name: "studentid" },
-              // { label: "Designation", name: "designation" },
               { label: "Mobile Number", name: "mobile" },
               { label: "Password", name: "password", type: "password" },
               {
@@ -185,6 +184,9 @@ function Signup() {
                             return "Invalid mobile number pattern";
                           return true;
                         }
+                        : name === "username"
+          ? (value) =>
+              value.trim() !== "" || "Full Name cannot be only spaces"
                       : undefined,
                 })}
                 helperText={errors[name]?.message}
