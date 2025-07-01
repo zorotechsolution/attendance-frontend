@@ -73,7 +73,7 @@ console.log("Admin check:", data.is_staff, "→", Boolean(data.is_staff));
           key={index}
           onClick={() => {
       navigate(`/dashboard${item.path ? `/${item.path}` : ""}`);
-      if (window.innerWidth < 1024) setShowSidebar(false); // 👈 auto-close on mobile
+      if (window.innerWidth < 1024) setShowSidebar(false); 
     }}
           sx={{
             display: "flex",
