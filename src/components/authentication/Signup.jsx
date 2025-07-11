@@ -230,13 +230,13 @@ function Signup() {
 
             <TextField
               select
-              label="Designation"
+              label="Domain"
               variant="outlined"
-              {...register("designation", {
-                required: "designation is required",
+              {...register("Domain", {
+                required: "Domain is required",
               })}
-              helperText={errors.designation?.message}
-              error={!!errors.designation}
+              helperText={errors.Domain?.message}
+              error={!!errors.Domain}
               fullWidth
               sx={{
                 mb: 2,
@@ -277,15 +277,17 @@ function Signup() {
               <MenuItem value="graphicdesign">Graphic Design</MenuItem>
               <MenuItem value="contentwriting">Content writing</MenuItem>
               <MenuItem value="humanresources">Human Resources</MenuItem>
+              <MenuItem value="frontend">Frontend Development</MenuItem>
+              <MenuItem value="dataanalysis">Data Analysis</MenuItem>
             </TextField>
 
             <TextField
               select
-              label="Domain"
+              label="Designation"
               variant="outlined"
-              {...register("domain", { required: "Domain is required" })}
-              helperText={errors.domain?.message}
-              error={!!errors.domain}
+              {...register("domain", { required: "Designation is required" })}
+              helperText={errors.Designation?.message}
+              error={!!errors.Designation}
               fullWidth
               sx={{
                 mb: 2,
