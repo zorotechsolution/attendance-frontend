@@ -232,7 +232,7 @@ function Signup() {
               select
               label="Domain"
               variant="outlined"
-              {...register("Domain", {
+              {...register("domain", {
                 required: "Domain is required",
               })}
               helperText={errors.Domain?.message}
