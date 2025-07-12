@@ -285,7 +285,7 @@ function Signup() {
               select
               label="Designation"
               variant="outlined"
-              {...register("domain", { required: "Designation is required" })}
+              {...register("designation", { required: "Designation is required" })}
               helperText={errors.Designation?.message}
               error={!!errors.Designation}
               fullWidth
