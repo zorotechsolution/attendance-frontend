@@ -38,7 +38,7 @@ function Signup() {
     const signupFunction = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/signup/`,
+  `https://attendance-backend-6ytg.onrender.com/signup/`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
